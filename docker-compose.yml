@@ -1,0 +1,76 @@
+# This is a Docker Compose file to work with Loud ML and an InfluxDB stack.
+
+version: "3.6"
+
+services:
+  loudml:
+    image: loudml/loudml:latest
+    container_name: LoudMLV1
+    restart: always
+    volumes:
+      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/loudml/loudml.yml:/etc/loudml/config.yml:ro
+      - var_loudml
+    environment:
+      influx: http://influxdb:8086
+      influx_database: telegraf #this is weird but appears to create a database in influxdb, I assume you can access influxdb and create a database for each of your containers on the network
+    ports:
+      - "8077:8077"
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+
+  influxdb:
+    image: influxdb:1.8.10
+    container_name: InfluxDBV1
+    restart: always
+    environment:
+      - INFLUX_USERNAME=admin
+      - INFLUX_PASSWORD=admin
+      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken!
+    ports:
+      - "8086:8086"
+    volumes:
+      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf 
+      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/data:/var/lib/influxdb/data 
+      - var_influxdb
+
+  telegraf:
+    image: telegraf
+    container_name: TelegrafV1
+    restart: always
+    volumes:
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+    environment:
+    - DOCKER_INFLUXDB_INIT_ORG=STFC
+    - DOCKER_INFLUXDB_INIT_BUCKET=Albertos
+    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=WhateverToken!
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:trythis"
+
+  grafana:
+    image: grafana/grafana-enterprise:7.5.8
+    container_name: GrafanaV1
+    restart: always
+    ports:
+      - 3000:3000
+    user: '104'
+    environment:
+    - GF_INSTALL_PLUGINS=http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app
+    volumes:
+      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/grafana/grafana.ini:/etc/grafana/grafana.ini:rw
+      - var_grafana
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:trythis"
+
+volumes:
+  var_loudml:
+    external: false
+  var_influxdb:
+    external: false
+  var_grafana:
+    external: false
