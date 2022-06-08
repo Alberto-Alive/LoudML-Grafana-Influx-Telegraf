@@ -2,7 +2,7 @@
 
 As of 08.06.2022 : updated by Alberto, any queries email me `albertopopescu@outlook.com`
 
-Stage I REQUIREMENTS
+## Stage I REQUIREMENTS
 
 - Windows 10 Enterprise version 21H2
 - Docker version 20.10.13, build a224086
@@ -12,7 +12,7 @@ Stage I REQUIREMENTS
 - LoudML version 1.6.0
 
 
-Stage II WINDOWS-DOCKER SETUP
+## Stage II WINDOWS-DOCKER SETUP
 
 `WINDOWS`
 1. Enable HYPER-V in windows features: https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
@@ -23,8 +23,34 @@ Visualise:
 
 ![image](https://user-images.githubusercontent.com/63293696/172639961-ab026550-c581-46d8-9e9a-e60db502d3f6.png)
 
+## Stage III DOCKER-COMPOSE.YML FILE
+1. Create a file called 'docker-compose.yml' using below structure:
 
 ```yaml
+# This is a Docker Compose file to work with Loud ML and an InfluxDB stack.
+version: "3.6"
+services:
+    loudml:
+    influxdb:
+    telegraf:
+    grafana:
+volumes:
+```
+2. Service loudml:
 
-
+```yaml
+  loudml:
+    image: loudml/loudml:addVersion
+    container_name: addName 
+    restart: always 
+    volumes: 
+      - addYourPcPathToFile/config.yml:/etc/loudml/config.yml:ro 
+      - var_loudml
+    environment: 
+      influx: http://addParameterThatIsExactlyTheServiceNameOfInfluxDBFoundInDockerComposeFile:addDockerPortOfInfluxDBServiceFoundInDockerComposeFile
+      influx_database: addNameForADatabaseToBeCreatedOnInfluxDB 
+    ports:
+      - "addPortToBeOpenedOnYourNetwork:addPortToBeOpenedOnDockerNetwork" 
+    depends_on:
+      - addNameOfTheInfluxDBServiceFoundInDockerComposeFile
 ```

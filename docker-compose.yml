@@ -1,6 +1,6 @@
 # This is a Docker Compose file to work with Loud ML and an InfluxDB stack.
 
-version: "3.6"
+version: "3.6" # this specifies the version of docker interpreter of the commands present in this file.
 # The name of the network containing the services/containers below will be named using the name of the folder containing this file docker-compose.yml
 services: # here we specify the containers to be built: loudml, influxdb, telegraf, grafana.
   loudml:
@@ -20,7 +20,7 @@ services: # here we specify the containers to be built: loudml, influxdb, telegr
     links:
       - 'influxdb:IcanBeReachedByThisNameToo' # allows loudml to access influxdb service over a network using both 'influxdb' and 'IcanBeReachedByThisNameToo'
 
-  influxdb:
+  influx:
     image: influxdb:1.8.10 # here you can be specific about the version you want to target
     container_name: InfluxDBV1
     restart: always
