@@ -21,6 +21,8 @@ As of 08.06.2022 : updated by Alberto, any queries email me `albertopopescu@outl
 Visualise:
 ![image](https://user-images.githubusercontent.com/63293696/172639073-ed240188-bd36-4c24-a096-9ef1b94d0261.png)
 
+`Docker`
+Visualise
 ![image](https://user-images.githubusercontent.com/63293696/172639961-ab026550-c581-46d8-9e9a-e60db502d3f6.png)
 
 ## Stage III DOCKER-COMPOSE.YML FILE
