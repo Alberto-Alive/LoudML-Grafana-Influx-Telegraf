@@ -33,3 +33,5 @@
 ## LoudML
 1. GitHub: https://github.com/regel/loudml
 2. Docs: https://loudml.io
+3. Understand settings: https://medium.com/@vova.sergeyev/understanding-loud-ml-model-settings-133b10998a67
+4. LoudMl-GrafanaApp: https://vsergeyev.github.io/loudml-grafana-app/
