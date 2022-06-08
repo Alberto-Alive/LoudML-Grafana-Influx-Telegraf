@@ -21,6 +21,7 @@ Stage II WINDOWS-DOCKER SETUP
 Visualise:
 ![image](https://user-images.githubusercontent.com/63293696/172639073-ed240188-bd36-4c24-a096-9ef1b94d0261.png)
 
+![image](https://user-images.githubusercontent.com/63293696/172639961-ab026550-c581-46d8-9e9a-e60db502d3f6.png)
 
 
 ```yaml
