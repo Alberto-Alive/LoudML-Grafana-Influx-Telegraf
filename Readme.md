@@ -19,7 +19,8 @@ Stage II WINDOWS-DOCKER SETUP
 2. Install WSL2: https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10
 
 Visualise:
-image.png
+![image](https://user-images.githubusercontent.com/63293696/172639073-ed240188-bd36-4c24-a096-9ef1b94d0261.png)
+
 
 
 ```yaml
