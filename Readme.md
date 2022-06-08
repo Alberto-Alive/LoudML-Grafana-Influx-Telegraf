@@ -90,3 +90,23 @@ influx:
     links: 
       - "influxdb:addAlternativeNameToAccessInfluxdbBy"
 ```
+5. Service grafana:
+
+```yaml
+ grafana:
+    image: grafana/grafana-enterprise:addVersion
+    container_name: addName
+    restart: always
+    ports:
+      - addPortToBeOpenedOnYourNetworkDefaul3000:addPortToBeOpenedOnDockerNetworkDefault3000
+    user: '104'
+    environment:
+    - GF_INSTALL_PLUGINS=addPluginUrlExample>>http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app
+    volumes:
+      - addYourPcPathToConfigFile/grafana/grafana.ini:/etc/grafana/grafana.ini:rw 
+      - var_grafana
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:addAlternativeNameToAccessInfluxdbBy"
+```
