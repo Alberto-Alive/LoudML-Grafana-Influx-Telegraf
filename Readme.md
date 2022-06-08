@@ -40,17 +40,53 @@ volumes:
 
 ```yaml
   loudml:
-    image: loudml/loudml:addVersion
+    image: loudml/loudml:addVersionExample1.6.0
     container_name: addName 
     restart: always 
     volumes: 
-      - addYourPcPathToFile/config.yml:/etc/loudml/config.yml:ro 
+      - addYourPcPathToConfigFile/loudml/config.yml:/etc/loudml/config.yml:ro 
       - var_loudml
     environment: 
       influx: http://addParameterThatIsExactlyTheServiceNameOfInfluxDBFoundInDockerComposeFile:addDockerPortOfInfluxDBServiceFoundInDockerComposeFile
       influx_database: addNameForADatabaseToBeCreatedOnInfluxDB 
     ports:
-      - "addPortToBeOpenedOnYourNetwork:addPortToBeOpenedOnDockerNetwork" 
+      - "addPortToBeOpenedOnYourNetworkDefault8077:addPortToBeOpenedOnDockerNetworkDefault8077" 
     depends_on:
       - addNameOfTheInfluxDBServiceFoundInDockerComposeFile
+```
+3. Service influx:
+
+```yaml
+influx:
+    image: influxdb:addVersionExample1.8.10 
+    container_name: addName
+    restart: always
+    environment:
+      - INFLUX_USERNAME=addUserName 
+      - INFLUX_PASSWORD=addPassword
+      - INFLUXDB_HTTP_SHARED_SECRET=addToken
+    ports:
+      - "addPortToBeOpenedOnYourNetworkDefaul8086:addPortToBeOpenedOnDockerNetworkDefault8086"
+    volumes:
+      - addYourPcPathToConfigFile/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf 
+      - addYourPcPathToDataFolder/influxdb/data:/var/lib/influxdb/data
+      - var_influxdb
+```
+4. Service telegraf:
+
+```yaml
+  telegraf:
+    image: telegraf:addVersionExample1.22.4
+    container_name: addName
+    restart: always
+    volumes:
+      - "addYourPcPathToConfigFile/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro" 
+    environment: 
+    - DOCKER_INFLUXDB_INIT_ORG=addNameOfOrganisation 
+    - DOCKER_INFLUXDB_INIT_BUCKET=addNameOfYourBucket
+    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=addTokenHereOrSetTokenInTelegrafConfigFile
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:addAlternativeNameToAccessInfluxdbBy"
 ```
