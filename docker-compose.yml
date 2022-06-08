@@ -1,54 +1,54 @@
 # This is a Docker Compose file to work with Loud ML and an InfluxDB stack.
 
 version: "3.6"
-
-services:
+# The name of the network containing the services/containers below will be named using the name of the folder containing this file docker-compose.yml
+services: # here we specify the containers to be built: loudml, influxdb, telegraf, grafana.
   loudml:
-    image: loudml/loudml:latest
-    container_name: LoudMLV1
-    restart: always
-    volumes:
-      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/loudml/loudml.yml:/etc/loudml/config.yml:ro
-      - var_loudml
-    environment:
-      influx: http://influxdb:8086
-      influx_database: telegraf #this is weird but appears to create a database in influxdb, I assume you can access influxdb and create a database for each of your containers on the network
+    image: loudml/loudml:latest # the latest tag will always use the latest version of loudml
+    container_name: LoudMLV1 # this gives a name to this particular container
+    restart: always # this restarts the container automatically if it stops (due to errors or whatever reason).
+    volumes: 
+      - D:/AbcWork/LoudML/GitHubDocsInflux/useInfluxV1/LoudMLData/loudml/loudml.yml:/etc/loudml/config.yml:ro # the framework is local-drive:docker-drive:ro; if you remove 'ro' attribute it will automatically default to rw
+      - var_loudml # this persists docker-drive onto your system so when you stop this container data won't be lost and can be accessed again on restart.
+    environment: # additional setting for setting up loduml with influxdb but same settings can be defined in loudml.yml config file ('/LoudMLData/loudml/loudml.yml')
+      influx: http://influxdb:8086 # this specifies where loudml can find influxdb over the docker network.
+      influx_database: telegraf # this creates a database in influxdb.
     ports:
-      - "8077:8077"
-    depends_on:
+      - "8077:8077" # ports convention is as follow local-network:docker-network; opens a port on our netwrok and on docker's network.
+    depends_on: # is used to specify which services to be built before this (loudml service) can be built on docker.
       - influxdb
     links:
-      - influxdb
+      - 'influxdb:IcanBeReachedByThisNameToo' # allows loudml to access influxdb service over a network using both 'influxdb' and 'IcanBeReachedByThisNameToo'
 
   influxdb:
-    image: influxdb:1.8.10
+    image: influxdb:1.8.10 # here you can be specific about the version you want to target
     container_name: InfluxDBV1
     restart: always
     environment:
-      - INFLUX_USERNAME=admin
+      - INFLUX_USERNAME=admin # you can set the initial account directly here so you can then login with these credentials
       - INFLUX_PASSWORD=admin
-      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken!
+      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken! # this is the token you otherwise would create using influx cli
     ports:
       - "8086:8086"
     volumes:
-      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf 
-      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/data:/var/lib/influxdb/data 
+      - D:/AbcWork/LoudML/useInfluxV1/GitHubDocsInflux/LoudMLData/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf # influx.conf is the file tha keeps the configuration/setting for influx.
+      - D:/AbcWork/LoudML/useInfluxV1/GitHubDocsInflux/LoudMLData/influxdb/data:/var/lib/influxdb/data # data folder is where dta is stored and we want it persisted on our local-drive so on contianer restart we won't lose data.
       - var_influxdb
 
   telegraf:
-    image: telegraf
+    image: telegraf # it will pull the latest version even if you do not specify latest (currently we use version 1.22.4)
     container_name: TelegrafV1
     restart: always
     volumes:
-      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
-    environment:
-    - DOCKER_INFLUXDB_INIT_ORG=STFC
-    - DOCKER_INFLUXDB_INIT_BUCKET=Albertos
-    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=WhateverToken!
+      - "D:/AbcWork/LoudML/useInfluxV1/GitHubDocsInflux/LoudMLData/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro" # telegraf.conf file is the file holding the configuraions/settings; is set to 'ro' which only gives read permissions to docker for the file found on our local-drive; otherwise, rw would allow docker to modify the config file we have linked on our local drive.
+    environment: # here you provide the details for accessing influxdb container
+    - DOCKER_INFLUXDB_INIT_ORG=STFC # this would be the name of your organisation
+    - DOCKER_INFLUXDB_INIT_BUCKET=Albertos # this would be the name of your bucket/database
+    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=WhateverToken! # this would be the access token
     depends_on:
       - influxdb
     links: 
-      - "influxdb:trythis"
+      - "influxdb:trythis" # this can be used in telegraf.conf file where the url can be either http://influxdb:8086 or http://trythis:8086.
 
   grafana:
     image: grafana/grafana-enterprise:7.5.8
@@ -56,11 +56,11 @@ services:
     restart: always
     ports:
       - 3000:3000
-    user: '104'
+    user: '104' # user id as specified in grafana docs for authentication
     environment:
-    - GF_INSTALL_PLUGINS=http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app
+    - GF_INSTALL_PLUGINS=http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app # this is how you cn install plugins directly into grafana
     volumes:
-      - D:/AbcWork/LoudML/useInfluxV1/LoudMLData/grafana/grafana.ini:/etc/grafana/grafana.ini:rw
+      - D:/AbcWork/LoudML/useInfluxV1/GitHubDocsInflux/LoudMLData/grafana/grafana.ini:/etc/grafana/grafana.ini:rw # grafana.ini is the config file for grafana; here we can remove the 'rw' since the default is rw
       - var_grafana
     depends_on:
       - influxdb
@@ -69,7 +69,7 @@ services:
 
 volumes:
   var_loudml:
-    external: false
+    external: false # we specify that the volume was not created external of this file docker-compose; anyways in my case even if I create the volume myself, set this external:true it gives an error so advice: delete all the volumes for this network and set external:false (or even remove this line since default for external is flase) so docker-compose will create these volumes itself.
   var_influxdb:
     external: false
   var_grafana:
