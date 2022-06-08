@@ -116,7 +116,6 @@ influx:
 6. Volumes:
 
 ```yaml
-
 volumes:
   var_loudml:
     external: if-set-to-FALSE-docker-compose-will-create-the-volumes
