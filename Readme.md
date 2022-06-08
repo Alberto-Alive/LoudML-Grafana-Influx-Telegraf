@@ -113,3 +113,15 @@ influx:
     links: 
       - "influxdb:addAlternativeNameToAccessInfluxdbBy"
 ```
+6. Volumes:
+
+```yaml
+
+volumes:
+  var_loudml:
+    external: if-set-to-FALSE-docker-compose-will-create-the-volumes
+  var_influxdb:
+    external: if-set-to-TRUE-docker-compose-will-check-for-external-volumes-already-created
+  var_grafana:
+    external: false
+```
