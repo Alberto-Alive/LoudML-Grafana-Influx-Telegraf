@@ -124,3 +124,23 @@ volumes:
   var_grafana:
     external: false
 ```
+
+Stage IV GRAFANA SETUP
+
+1. Allow grafana to use unsigned plugins by adding this line into grafana.ini
+
+```ini
+[plugins]
+allow_loading_unsigned_plugins = true
+```
+
+2. Setup Influx datasource
+
+-Query Language : InfluxQL
+
+- HTTP
+  URL : http://influxdb:8086 (http://<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>)
+  Access: Server(Default)
+
+- Custom HTTP Headers
+  Header: Authorization Value: Token addNameOfYourTokenFromInfluxDB (Leave a space between 'Token' and 'yourActualToken')
