@@ -152,6 +152,15 @@ allow_loading_unsigned_plugins = true
   HTTP Method: GET
 
 Visualise:
-Influx
+- Datasource: Influx
     ![image](https://user-images.githubusercontent.com/63293696/172815599-334e69b7-0f33-4b0b-aecf-afb57944d74c.png)
+- Datasource: LoudML
+    ![image](https://user-images.githubusercontent.com/63293696/172817494-4d301deb-6181-496f-8e63-82dbac53bc0c.png)
+- LoudML: Model
+    ![image](https://user-images.githubusercontent.com/63293696/172817621-856f127a-9313-4bdc-94f3-cc2a42cc92f7.png)
+-LoudML: Dashboard Setup
+    ![image](https://user-images.githubusercontent.com/63293696/172817756-235a3bb0-14dc-4db8-92b6-60d3036cf034.png)
+
+    
+
 
