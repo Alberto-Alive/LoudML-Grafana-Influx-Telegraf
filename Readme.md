@@ -159,7 +159,7 @@ Visualise:
 - LoudML: Model
     ![image](https://user-images.githubusercontent.com/63293696/172817621-856f127a-9313-4bdc-94f3-cc2a42cc92f7.png)
 -LoudML: Dashboard Setup
-    ![image](https://user-images.githubusercontent.com/63293696/172817756-235a3bb0-14dc-4db8-92b6-60d3036cf034.png)
+    ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172818850-3d2d017a-8ed3-4354-8b76-cf188ae7c762.png)
 
     
 
