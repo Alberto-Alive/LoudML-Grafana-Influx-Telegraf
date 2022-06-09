@@ -139,21 +139,23 @@ allow_loading_unsigned_plugins = true
 - Query Language : InfluxQL
 
 - HTTP
-  URL : http://influxdb:8086 (http://`<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>`)
-  Access: Server(Default)
+  - URL : http://influxdb:8086 (http://`<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>`)
+  - Access: Server(Default)
 
 - Custom HTTP Headers
-  Header: Authorization Value: Token addNameOfYourTokenFromInfluxDB (Leave a space between 'Token' and 'yourActualToken')
+  - Header: Authorization Value: Token addNameOfYourTokenFromInfluxDB (Leave a space between 'Token' and 'yourActualToken')
 
 - InfluxDB Details
-  Database: _internal (Add any database/bucket you have created on Influx; '_internal' is the default database created by InfluxV1)
-  Username: admin (The username for Influx service defined in docker-compose file or influxdb.conf file)
-  Password: admin (the password for Influx service defined in docker-compose file or influxdb.conf file)
-  HTTP Method: GET
+  - Database: _internal (Add any database/bucket you have created on Influx; '_internal' is the default database created by InfluxV1)
+  - Username: admin (The username for Influx service defined in docker-compose file or influxdb.conf file)
+  - Password: admin (the password for Influx service defined in docker-compose file or influxdb.conf file)
+  - HTTP Method: GET
 
 3. Setup LoudML datasource
 - HTTP
-  -- Loud ML Server URL : http://loudml:8077 (http://`<nameOfLoudMLServiceInDockerComposeFile>:<numberOfPortLoudMLServiceOnDockerComposeFile>`)
+  - Loud ML Server URL : http://loudml:8077 (http://`<nameOfLoudMLServiceInDockerComposeFile>:<numberOfPortLoudMLServiceOnDockerComposeFile>`)
+  - Access : Server (Default)
+  
 Visualise:
 - Datasource: Influx
     ![image](https://user-images.githubusercontent.com/63293696/172815599-334e69b7-0f33-4b0b-aecf-afb57944d74c.png)
