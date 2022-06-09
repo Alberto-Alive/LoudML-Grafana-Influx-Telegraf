@@ -139,7 +139,7 @@ allow_loading_unsigned_plugins = true
 - Query Language : InfluxQL
 
 - HTTP
-  URL : http://influxdb:8086 (http://<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>)
+  URL : http://influxdb:8086 (http://`<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>`)
   Access: Server(Default)
 
 - Custom HTTP Headers
