@@ -202,6 +202,8 @@ Visualise:
     ![image](https://user-images.githubusercontent.com/63293696/172817621-856f127a-9313-4bdc-94f3-cc2a42cc92f7.png)
 - LoudML: Dashboard Setup
     ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172818850-3d2d017a-8ed3-4354-8b76-cf188ae7c762.png)
+- Influx: Databases
+    ![image](https://user-images.githubusercontent.com/63293696/172905942-3b787747-18c6-4163-8d47-b93c3feef95c.png)
 
     
 
