@@ -191,7 +191,7 @@ allow_loading_unsigned_plugins = true
     - Loud ML Server : Loud ML Datasource (Select the name set for LoudML as datasource on Grafana)
     - Input Bucket : influxdb (add the name of the input bucket in loudml.yml)
     - Output Bucket : loudml  (add the name of the output bucket in loudml.yml)
-    
+    ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172905276-41babeba-df12-47ca-a6e8-49248ef2bcc2.png)
 
 Visualise:
 - Datasource: Influx
