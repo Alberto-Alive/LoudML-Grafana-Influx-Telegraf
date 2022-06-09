@@ -155,7 +155,35 @@ allow_loading_unsigned_plugins = true
 - HTTP
   - Loud ML Server URL : http://loudml:8077 (http://`<nameOfLoudMLServiceInDockerComposeFile>:<numberOfPortLoudMLServiceOnDockerComposeFile>`)
   - Access : Server (Default)
+
+4. Setup Model on LoudML
+- Name : addAnyName
+- Model type : donut
+- Bucket : influxdb (this is the bucket name specified in the loudml.yml for the influx database from where you get your data to apply the ML model on)
+- Max training hyper-params iterantions : 10 (number of variable parameters)
+- GroupedBy bucket interval : 11s (interval set on your dashboard for the above specified bucket influxdb)
+- Span : 100 (number of training iterations)
+
+- Feature
+  - Name : addAnyName
+  - Measurement : cpu  (add the value you inserted in the 'select measurement' field in the dashboard)
+  - Field : usage_user (add the value inserted in the 'field' field in the dashboard)
+  - Metric : mean (collects the mean values)
+  - Default : 0 (when there are missing value replace with 0)
+
+- Predictions 
+  - Interval : 11s (intervall for predictions)
+  - Offset : 10s
+
+- Anomalies
+  - Min threshold : 0
+  - Max threshold : 0
+
+5. Dashboard setup InfluxDB and LoudML
+- Query 
+  - InfluxDB (Select the name set for Influx as datasource on Grafana)
   
+
 Visualise:
 - Datasource: Influx
     ![image](https://user-images.githubusercontent.com/63293696/172815599-334e69b7-0f33-4b0b-aecf-afb57944d74c.png)
