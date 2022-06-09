@@ -182,7 +182,8 @@ allow_loading_unsigned_plugins = true
 5. Dashboard setup InfluxDB and LoudML
 - Query 
   - InfluxDB (Select the name set for Influx as datasource on Grafana)
-  
+    ![image](https://user-images.githubusercontent.com/63293696/172900728-1ce9fc62-4760-43a1-946f-19de5c2a1aff.png)
+
 
 Visualise:
 - Datasource: Influx
