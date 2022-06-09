@@ -136,7 +136,7 @@ allow_loading_unsigned_plugins = true
 
 2. Setup Influx datasource
 
--Query Language : InfluxQL
+- Query Language : InfluxQL
 
 - HTTP
   URL : http://influxdb:8086 (http://<nameOfInfluxServiceInDockerComposeFile>:<numberOfPortInfluxServiceOnDockerComposeFile>)
@@ -144,3 +144,11 @@ allow_loading_unsigned_plugins = true
 
 - Custom HTTP Headers
   Header: Authorization Value: Token addNameOfYourTokenFromInfluxDB (Leave a space between 'Token' and 'yourActualToken')
+
+- InfluxDB Details
+  Database: _internal (Add any database/bucket you have created on Influx; '_internal' is the default database created by InfluxV1)
+  Username: admin (The username for Influx service defined in docker-compose file or influxdb.conf file)
+  Password: admin (the password for Influx service defined in docker-compose file or influxdb.conf file)
+  HTTP Method: GET
+
+Visualise:
