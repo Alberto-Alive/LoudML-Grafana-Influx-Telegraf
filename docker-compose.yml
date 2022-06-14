@@ -13,7 +13,7 @@ services: # here we specify the containers to be built: loudml, influxdb, telegr
       - var_loudml # this persists docker-drive onto your system so when you stop this container data won't be lost and can be accessed again on restart.
     environment: # additional setting for setting up loduml with influxdb but same settings can be defined in loudml.yml config file ('/LoudMLData/loudml/loudml.yml')
       influx: http://influxdb:8086 # this specifies where loudml can find influxdb over the docker network.
-      influx_database: telegraf # this creates a database in influxdb.
+      influx_database: yourDataEntersHere # this creates a database in influxdb.
     ports:
       - "8077:8077" # ports convention is as follow local-network:docker-network; opens a port on our netwrok and on docker's network.
     depends_on: # is used to specify which services to be built before this (loudml service) can be built on docker.
