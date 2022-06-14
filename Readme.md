@@ -193,6 +193,9 @@ allow_loading_unsigned_plugins = true
     - Output Bucket : loudml  (add the name of the output bucket in loudml.yml)
     ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172905276-41babeba-df12-47ca-a6e8-49248ef2bcc2.png)
 
+6. LoudML CLI commands
+- create model: 
+
 Visualise:
 - Datasource: Influx
     ![image](https://user-images.githubusercontent.com/63293696/172815599-334e69b7-0f33-4b0b-aecf-afb57944d74c.png)

@@ -8,6 +8,7 @@ services: # here we specify the containers to be built: loudml, influxdb, telegr
     container_name: LoudMLV1 # this gives a name to this particular container
     restart: always # this restarts the container automatically if it stops (due to errors or whatever reason).
     volumes: 
+      - D:/AbcWork/LoudML/useInfluxV1/GitHubDocsInflux/LoudMLData/loudml/models:/var/lib/loudml:ro #add your json files here that will contain the configurations for the models you will want to access/create/modify/train using either the docker cli or grafana interface.
       - D:/AbcWork/LoudML/GitHubDocsInflux/useInfluxV1/LoudMLData/loudml/loudml.yml:/etc/loudml/config.yml:ro # the framework is local-drive:docker-drive:ro; if you remove 'ro' attribute it will automatically default to rw
       - var_loudml # this persists docker-drive onto your system so when you stop this container data won't be lost and can be accessed again on restart.
     environment: # additional setting for setting up loduml with influxdb but same settings can be defined in loudml.yml config file ('/LoudMLData/loudml/loudml.yml')

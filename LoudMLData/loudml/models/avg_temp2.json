@@ -1,0 +1,20 @@
+{
+    "bucket_interval": "1m",
+    "default_bucket": "temperature-bucket",
+    "features": [
+      {
+        "default": 0,
+        "field": "temp2",
+        "metric": "avg",
+        "name": "avg_temp_feature"
+      }
+    ],
+    "interval": 60,
+    "max_evals": 10,
+    "name": "avg_temp2-model",
+    "offset": 30,
+    "span": 5,
+    "max_threshold": 90,
+    "min_threshold": 50,
+    "type": "donut"
+  }
