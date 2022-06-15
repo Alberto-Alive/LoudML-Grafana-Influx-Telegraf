@@ -9,7 +9,7 @@ As of 08.06.2022 : updated by Alberto, any queries email me `albertopopescu@outl
 - Influx version 1.8.10
 - Telegraf version 1.22.4
 - Grafana version 7.5.8
-- LoudML version 1.6.0
+- LoudML version 1.7.2
 
 
 ## Stage II WINDOWS-DOCKER SETUP
