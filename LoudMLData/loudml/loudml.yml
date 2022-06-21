@@ -1,17 +1,17 @@
 ---
 buckets:
-  - name: readYourData #this works 
+  - name: readYourData #input bucket : this is the bucket where the data you want to use machine learning goes.
     type: influxdb
     addr: influxdb:8086
-    database: yourDataEntersHere #this database is created by default when you build influxdb image using docker
-    retention_policy: monitor
-    measurement: loudml
-  - name: readYourPrediction #this works: remember to create these two databases 'loudml' and 'mydb' in influxdb using docker cli
+    database: _internal #this database is created by default when you build influxdb image using docker.
+    retention_policy: monitor #this should match '_internal's database retention policy name.
+    measurement: loudml 
+  - name: readYourPrediction #output bucket : remember to create these two databases 'yourPredictionsEnterHere' and 'youAnnotationsEnterHere' in influxdb using docker cli.
     type: influxdb
     addr: influxdb:8086
     database: yourPredictionsEnterHere
-    retention_policy: autogen
-    measurement: loudml
+    retention_policy: autogen #this is the name of your retention policy when you want to display the machine learning predictions,must match 'yourPredictionsEnterHere's retention policy name. 
+    measurement: loudml #this is the name of your mesurement when you want to display the machine learning predictions.
     annotation_db: youAnnotationsEnterHere
 
 storage:
