@@ -128,13 +128,13 @@ volumes:
 
 Stage IV GRAFANA SETUP
 
-1. Allow grafana to use unsigned plugins by adding this line into grafana.ini
+1. Allow grafana to use unsigned plugins, to be able to use LoudML, by adding this line into grafana.ini, and then enable it.
 
 ```ini
 [plugins]
 allow_loading_unsigned_plugins = true
 ```
-
+- Enable LoudML plugin: Grafana >> Configuration >> Plugins >> LoudML >> Config >> Click 'Enable' button. Reminder: ensure StageIV-Step1 is complete!
 2. Setup Influx datasource
 
 - Query Language : InfluxQL
@@ -149,36 +149,38 @@ allow_loading_unsigned_plugins = true
 - InfluxDB Details
   - Database: _internal (Add any database/bucket you have created on Influx; '_internal' is the default database created by InfluxV1)
   - Username: admin (The username for Influx service defined in docker-compose file or influxdb.conf file)
-  - Password: admin (the password for Influx service defined in docker-compose file or influxdb.conf file)
+  - Password: admin (The password for Influx service defined in docker-compose file or influxdb.conf file)
   - HTTP Method: GET
+  
+  Click 'Save and Test' >> If it works, a green label pops up: Data source is working. >>If it doesn't work, most likely you have some other authentication method checked or/and your url doesn't have the service name of influxdb specified in docker-compose as it's domain name.
 
 3. Setup LoudML datasource
 - HTTP
   - Loud ML Server URL : http://loudml:8077 (http://`<nameOfLoudMLServiceInDockerComposeFile>:<numberOfPortLoudMLServiceOnDockerComposeFile>`)
   - Access : Server (Default)
-
+Click 'Save and Test'
 4. Setup Model on LoudML
 - Name : addAnyName
 - Model type : donut
-- Bucket : influxdb (this is the bucket name specified in the loudml.yml for the influx database from where you get your data to apply the ML model on)
+- Bucket : readYourData (this is the bucket name specified in the loudml.yml for the influx database from where you get your data to apply the ML model on : if you see the example provided here note that the first bucket on the buckets list is for the database from where you get the data to train you model, whereas, the second bucket on the lsit is where the trained data goes based on which your predictions are made)
 - Max training hyper-params iterantions : 10 (number of variable parameters)
-- GroupedBy bucket interval : 11s (interval set on your dashboard for the above specified bucket influxdb)
-- Span : 100 (number of training iterations)
+- GroupedBy bucket interval : 5s (setting the interval to 1s for the model - I believe - should be the same or close to the one set on the telegraf (5s in our case - in telegraf.conf) for querying the data to influxdb)
+- Span : 100 (number of training iterations (100 times 5s over 60 = approx 8mins to train), adjust as you need but you should need more than 100 to train your model)
 
 - Feature
   - Name : addAnyName
   - Measurement : cpu  (add the value you inserted in the 'select measurement' field in the dashboard)
   - Field : usage_user (add the value inserted in the 'field' field in the dashboard)
   - Metric : mean (collects the mean values)
-  - Default : 0 (when there are missing value replace with 0)
+  - Default : 0 (when there are missing value replace with 0, missing values can also occur this model reads data quicker (every 5s) than data is written by telegraf to influxdb (every 5s))
 
 - Predictions 
-  - Interval : 11s (intervall for predictions)
-  - Offset : 10s
+  - Interval : 5s (intervall for predictions, you probably want your predictions to be of the same interval with the frequency with which telegraf writes data to influxdb (every 5s))
+  - Offset : 5s (An offset is a per-row “bias value” that is used during model training)
 
 - Anomalies
-  - Min threshold : 0
-  - Max threshold : 0
+  - Min threshold : 0 (what goes below this value is considered anomaly, stored into the 'annotation_db: youAnnotationsEnterHere' and is excluded from your training data)
+  - Max threshold : 0 (what goes above this value is considered anomaly, stored into the 'annotation_db: youAnnotationsEnterHere' and is excluded from your training data)
 
 5. Dashboard setup InfluxDB and LoudML
 - Query 
