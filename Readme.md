@@ -184,8 +184,9 @@ Click 'Save and Test'
 
 5. Dashboard setup InfluxDB and LoudML
 - Query 
-  - InfluxDB (Select the name set for Influx as datasource on Grafana)
-    ![image](https://user-images.githubusercontent.com/63293696/172900728-1ce9fc62-4760-43a1-946f-19de5c2a1aff.png)
+  - InfluxDB (From the top left dropdown, select the name set for Influx as datasource on Grafana)
+    ![Screenshot 2022-06-21 173615](https://user-images.githubusercontent.com/63293696/174856028-35982c24-5ea0-4ed1-85e2-15334e5c54b7.png)
+
 
 - Panel 
   - Visualization
