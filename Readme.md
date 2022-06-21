@@ -1,8 +1,13 @@
 # LoudML-Grafana-Influx-Telegraf
 
-As of 08.06.2022 : updated by Alberto, any queries email me `albertopopescu@outlook.com`
+As of 21.06.2022 : updated by Alberto, any queries email me `albertopopescu@outlook.com`
 
-## Stage I REQUIREMENTS
+This tutorial is for InfluxDB version 1.x. 
+LoudML supports InfluxDB version 1.x and 2.x. LoudML also supports Grafana version 8.x.
+For your project you only need to get the docker-compose file and LoudMLData folder, and modify it to suit your requirements.
+
+
+## Stage I ENVIRONMENT
 
 - Windows 10 Enterprise version 21H2
 - Docker version 20.10.13, build a224086
@@ -84,10 +89,6 @@ influx:
     restart: always
     volumes:
       - "addYourPcPathToConfigFile/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro" 
-    environment: 
-    - DOCKER_INFLUXDB_INIT_ORG=addNameOfOrganisation 
-    - DOCKER_INFLUXDB_INIT_BUCKET=addNameOfYourBucket
-    - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=addTokenHereOrSetTokenInTelegrafConfigFile
     depends_on:
       - influxdb
     links: 
