@@ -28,7 +28,7 @@ services: # here we specify the containers to be built: loudml, influxdb, telegr
     environment:
       - INFLUX_USERNAME=admin # you can set the initial account directly here so you can then login with these credentials
       - INFLUX_PASSWORD=admin
-      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken! # this is the token you otherwise would create using influx cli
+      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken! # a token is a secret key used to allow access for all databases* on InfluxDB, it can be created using influx cli or configured in influxdb.conf
     ports:
       - "8086:8086"
     volumes:
