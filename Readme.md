@@ -193,9 +193,9 @@ Click 'Save and Test'
     - Loud ML Graph
   - Display 
     - Loud ML Server : Loud ML Datasource (Select the name set for LoudML as datasource on Grafana)
-    - Input Bucket : influxdb (add the name of the input bucket in loudml.yml)
-    - Output Bucket : loudml  (add the name of the output bucket in loudml.yml)
-    ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172905276-41babeba-df12-47ca-a6e8-49248ef2bcc2.png)
+    - Input Bucket : readYourData (add the name of the input bucket in loudml.yml)
+    - Output Bucket : readYourPrediction  (add the name of the output bucket in loudml.yml)
+    ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-21-18_13_55](https://user-images.githubusercontent.com/63293696/174860027-ed786015-e2c8-4ec5-800c-99ae65bb9b84.png)
 
 6. LoudML CLI commands
 - create model: 
