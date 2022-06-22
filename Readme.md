@@ -223,7 +223,7 @@ Visualise:
 - Grafana : LoudML: Dashboard Setup
     ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172818850-3d2d017a-8ed3-4354-8b76-cf188ae7c762.png)
 - Influx: Databases
-    ![image](https://user-images.githubusercontent.com/63293696/172905942-3b787747-18c6-4163-8d47-b93c3feef95c.png)
+    ![Screenshot 2022-06-22 155650](https://user-images.githubusercontent.com/63293696/175062693-d40c2bcc-350c-4426-a8e1-dea562048f04.png)
 
     
 
