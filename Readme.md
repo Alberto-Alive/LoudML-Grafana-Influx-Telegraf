@@ -221,7 +221,8 @@ Visualise:
     ![loudml model](https://user-images.githubusercontent.com/63293696/174865996-96b1589b-6f25-43be-be23-4eebd8276e29.png)
 
 - Grafana : LoudML: Dashboard Setup
-    ![screencapture-localhost-3000-d-LwSVJ797z-new-dashboard-copy-2022-06-09-10_36_27](https://user-images.githubusercontent.com/63293696/172818850-3d2d017a-8ed3-4354-8b76-cf188ae7c762.png)
+   ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-22-16_51_05](https://user-images.githubusercontent.com/63293696/175079906-a804968f-14cc-458e-bdde-a2890b8b2328.png)
+
 - Influx: Databases
     ![Screenshot 2022-06-22 155650](https://user-images.githubusercontent.com/63293696/175062693-d40c2bcc-350c-4426-a8e1-dea562048f04.png)
 
