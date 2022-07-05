@@ -133,6 +133,7 @@ volumes:
 
 Stage IV GRAFANA SETUP
 
+LogOn using default username == password: admin
 1. Allow grafana to use unsigned plugins, to be able to use LoudML, by adding this line into grafana.ini, and then enable it.
 
 ```ini
