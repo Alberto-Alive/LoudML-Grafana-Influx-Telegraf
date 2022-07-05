@@ -31,6 +31,11 @@ Visualise:
 Visualise:
 ![image](https://user-images.githubusercontent.com/63293696/172639961-ab026550-c581-46d8-9e9a-e60db502d3f6.png)
 
+Run docker-compose command:
+```bat 
+docker-compose up --build
+```
+
 ## Stage III DOCKER-COMPOSE.YML FILE
 1. Create a file called 'docker-compose.yml' using below structure:
 
