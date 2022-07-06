@@ -133,6 +133,7 @@ volumes:
 
 Stage IV GRAFANA SETUP
 
+LogOn using default username == password: admin
 1. Allow grafana to use unsigned plugins, to be able to use LoudML, by adding this line into grafana.ini, and then enable it.
 
 ```ini
@@ -192,15 +193,19 @@ Click 'Save and Test'
   - InfluxDB (From the top left dropdown, select the name set for Influx as datasource on Grafana)
     ![Screenshot 2022-06-21 173615](https://user-images.githubusercontent.com/63293696/174856028-35982c24-5ea0-4ed1-85e2-15334e5c54b7.png)
 
-
+- Annotations query: 
+```yml
+SELECT "text" FROM "autogen"."annotations" WHERE $timeFilter
+```
 - Panel 
   - Visualization
     - Loud ML Graph
   - Display 
     - Loud ML Server : Loud ML Datasource (Select the name set for LoudML as datasource on Grafana)
     - Input Bucket : readYourData (add the name of the input bucket in loudml.yml)
-    - Output Bucket : readYourPrediction  (add the name of the output bucket in loudml.yml)
-    ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-21-18_13_55](https://user-images.githubusercontent.com/63293696/174860027-ed786015-e2c8-4ec5-800c-99ae65bb9b84.png)
+    - Output Bucket : yourPredictionsEnterHere  (add the name of the output database, located under the output bucket 'readYourPrediction' in loudml.yml)
+    - Visualise:
+    ![ai](https://user-images.githubusercontent.com/63293696/177535712-53916d85-4f2f-4b05-8bb1-d6e6446eff03.png)
 
 6. LoudML CLI commands
 - create model: 
@@ -229,6 +234,7 @@ Visualise:
    ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-22-16_51_05](https://user-images.githubusercontent.com/63293696/175079906-a804968f-14cc-458e-bdde-a2890b8b2328.png)
 
 - Influx: Databases
+  - This database (chronograf) is created automatically by loudml to store annotations but they should be stored in yourAnnotationsEnterHere. It means something was       not set up correctly for annotations to be stored where we want them!
     ![Screenshot 2022-06-22 155650](https://user-images.githubusercontent.com/63293696/175062693-d40c2bcc-350c-4426-a8e1-dea562048f04.png)
 
     

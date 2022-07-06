@@ -18,6 +18,7 @@
 4. Docker-compose complete example: https://github.com/robcowart/docker_compose_cookbook/blob/master/influxdb/docker-compose.yml
 5. Docker-compose example: https://github.com/lmangani/loudml-docker/blob/master/docker-compose.yml
 6. Annotations issue (is working-your config is wrong): https://github.com/regel/loudml/issues/377
+7. Database queries inside docker cli: https://docs.influxdata.com/influxdb/v1.8/query_language/explore-schema/#show-field-keys
 
 ## Grafana
 1. GitHub: https://github.com/grafana/grafana
