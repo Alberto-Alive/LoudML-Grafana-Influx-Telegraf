@@ -1,0 +1,72 @@
+# influx
+Connected to http://localhost:8086 version 1.8.10
+InfluxDB shell version: 1.8.10
+> show databases
+name: databases
+name
+----
+_internal
+yourPredictionsEnterHere
+chronograf
+try
+> use yourPredictionsEnterHere
+Using database yourPredictionsEnterHere
+>
+> show tag keys
+name: cpu
+tagKey
+------
+cpu
+host
+
+name: disk
+tagKey
+------
+device
+fstype
+host
+mode
+path
+
+name: diskio
+tagKey
+------
+host
+name
+
+name: loudml
+tagKey
+------
+model
+
+name: mem
+tagKey
+------
+host
+
+name: net
+tagKey
+------
+host
+interface
+
+name: processes
+tagKey
+------
+host
+
+name: swap
+tagKey
+------
+host
+
+name: system
+tagKey
+------
+host
+> show tag values with key = "model"
+name: loudml
+key   value
+---   -----
+model _internal_cpu_mean_usage_system__time_5s
+>
