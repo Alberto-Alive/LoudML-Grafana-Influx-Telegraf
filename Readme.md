@@ -203,9 +203,9 @@ SELECT "text" FROM "autogen"."annotations" WHERE $timeFilter
   - Display 
     - Loud ML Server : Loud ML Datasource (Select the name set for LoudML as datasource on Grafana)
     - Input Bucket : readYourData (add the name of the input bucket in loudml.yml)
-    - Output Bucket : readYourPrediction  (add the name of the output bucket in loudml.yml)
-    ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-21-18_13_55](https://user-images.githubusercontent.com/63293696/174860027-ed786015-e2c8-4ec5-800c-99ae65bb9b84.png)
-
+    - Output Bucket : yourPredictionsEnterHere  (add the name of the output database, located under the output bucket 'readYourPrediction' in loudml.yml)
+    ![screencapture-localhost-3000-d-M5Dy4c6nz-new-dashboard-copy-2022-07-06-11_33_18](https://user-images.githubusercontent.com/63293696/177534716-483bd327-c420-4da4-bd91-e6c6f10d4ee4.png)
+   
 6. LoudML CLI commands
 - create model: 
 
