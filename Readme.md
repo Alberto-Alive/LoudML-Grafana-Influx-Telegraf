@@ -193,7 +193,10 @@ Click 'Save and Test'
   - InfluxDB (From the top left dropdown, select the name set for Influx as datasource on Grafana)
     ![Screenshot 2022-06-21 173615](https://user-images.githubusercontent.com/63293696/174856028-35982c24-5ea0-4ed1-85e2-15334e5c54b7.png)
 
-
+- Annotations query: 
+```yml
+SELECT "text" FROM "autogen"."annotations" WHERE $timeFilter
+```
 - Panel 
   - Visualization
     - Loud ML Graph
