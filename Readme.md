@@ -234,6 +234,7 @@ Visualise:
    ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-22-16_51_05](https://user-images.githubusercontent.com/63293696/175079906-a804968f-14cc-458e-bdde-a2890b8b2328.png)
 
 - Influx: Databases
+  - This database (chronograf) is created automatically by loudml to store annotations but they should be stored in yourAnnotationsEnterHere. It means something was       not set up correctly for annotations to be stored where we want them!
     ![Screenshot 2022-06-22 155650](https://user-images.githubusercontent.com/63293696/175062693-d40c2bcc-350c-4426-a8e1-dea562048f04.png)
 
     
