@@ -1,7 +1,7 @@
-# influx
+# influx                                                    ------------------------------------------------------------------------------------
 Connected to http://localhost:8086 version 1.8.10
 InfluxDB shell version: 1.8.10
-> show databases
+> show databases                                            ------------------------------------------------------------------------------------
 name: databases
 name
 ----
@@ -12,7 +12,7 @@ try
 > use yourPredictionsEnterHere
 Using database yourPredictionsEnterHere
 >
-> show tag keys
+> show tag keys                                             ------------------------------------------------------------------------------------
 name: cpu
 tagKey
 ------
@@ -64,7 +64,7 @@ name: system
 tagKey
 ------
 host
-> show tag values with key = "model"
+> show tag values with key = "model"                          ------------------------------------------------------------------------------------
 name: loudml
 key   value
 ---   -----
