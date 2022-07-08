@@ -197,6 +197,11 @@ Click 'Save and Test'
 ```yml
 SELECT "text" FROM "autogen"."annotations" WHERE $timeFilter
 ```
+- Train loudml model query: 
+  - --from now-30d --to now will take data starting 30days ago (from current date 'now' substract '30days' until the current date 'now')
+```yml
+loudml -e "train-model --from now-30d --to now _internal_cpu_mean_usage_system__time_5s"
+```
 - Panel 
   - Visualization
     - Loud ML Graph
