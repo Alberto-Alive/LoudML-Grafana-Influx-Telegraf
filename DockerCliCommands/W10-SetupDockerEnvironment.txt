@@ -1,0 +1,28 @@
+Enable-WindowsOptionalFeature -Online -FeatureName containers –All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All
+
+
+$version = (Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/docker/docker/master/VERSION).Content.Trim() Invoke-WebRequest "https://master.dockerproject.org/windows/amd64/docker-$($version).zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
+
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
+
+
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
+
+
+dockerd --register-service
+Start-Service Docker
+
+
+docker pull microsoft/nanoserver
+
+
+docker run -it microsoft/nanoserver cmd
+powershell.exe Add-Content C:\helloworld.ps1 'Write-Host "Hello World"'
+exit
+
+
+docker commit  helloworld
+
+
+docker run --rm helloworld powershell c:\helloworld.ps1

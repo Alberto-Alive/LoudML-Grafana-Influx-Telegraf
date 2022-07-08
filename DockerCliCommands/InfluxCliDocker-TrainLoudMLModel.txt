@@ -1,0 +1,9 @@
+$ loudml                                                                                   -----------------------------------------------
+Connected to localhost:8077 version 1.6.0
+Loud ML shell 1.6.3
+
+> list-models							                           -----------------------------------------------
+_internal_cpu_mean_usage_system__time_5s
+
+> train-model --from now-1d --to now _internal_cpu_mean_usage_system__time_5s      -----------------------------------------------
+training(_internal_cpu_mean_usage_system__time_5s):  10%|##4                     | 1/10 [06:18<00:09,  1.00s/it]
