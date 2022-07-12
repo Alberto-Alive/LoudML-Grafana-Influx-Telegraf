@@ -33,7 +33,7 @@ Visualise:
 
 Run docker-compose command:
 ```bat 
-docker-compose up --build
+docker-compose up
 ```
 
 ## Stage III DOCKER-COMPOSE.YML FILE
