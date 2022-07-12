@@ -58,7 +58,7 @@ volumes:
     restart: always 
     volumes: 
       - addYourPcPathToConfigFile/loudml/config.yml:/etc/loudml/config.yml:ro 
-      - var_loudml
+      - var_loudml:map/to/some/folder/in/loudml/container
     environment: 
       influx: http://addParameterThatIsExactlyTheServiceNameOfInfluxDBFoundInDockerComposeFile:addDockerPortOfInfluxDBServiceFoundInDockerComposeFile
       influx_database: addNameForADatabaseToBeCreatedOnInfluxDB 
@@ -83,7 +83,7 @@ influx:
     volumes:
       - addYourPcPathToConfigFile/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf 
       - addYourPcPathToDataFolder/influxdb/data:/var/lib/influxdb/data
-      - var_influxdb
+      - var_influxdb:map/to/some/folder/in/influxdb/container
 ```
 4. Service telegraf:
 
@@ -113,7 +113,7 @@ influx:
     - GF_INSTALL_PLUGINS=addPluginUrlExample>>http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app
     volumes:
       - addYourPcPathToConfigFile/grafana/grafana.ini:/etc/grafana/grafana.ini:rw 
-      - var_grafana
+      - var_grafana:map/to/some/folder/in/grafana/container
     depends_on:
       - influxdb
     links: 
