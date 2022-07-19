@@ -9,7 +9,8 @@
 2. Enable edit in container (not recomended): https://jhooq.com/docker-edit-file-inside-container/
 3. Docker-compose tutorial: https://adamtheautomator.com/docker-compose-tutorial/
 4. Docker volumes: https://devopsheaven.com/docker/docker-compose/volumes/2018/01/16/volumes-in-docker-compose.html
-5. Docker-compose curated list of examples: https://github.com/docker/awesome-compose
+5. Docker volumes for Grafana and Influxdb: https://www.datamachines.io/blog/understanding-docker-volume-persisting-a-grafana-configuration-file
+6. Docker-compose curated list of examples: https://github.com/docker/awesome-compose
 
 ## InfluxV1
 1. GitHub: https://github.com/influxdata/influxdb
