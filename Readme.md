@@ -277,14 +277,15 @@ Visualise:
     ![loudml model](https://user-images.githubusercontent.com/63293696/174865996-96b1589b-6f25-43be-be23-4eebd8276e29.png)
 
 - Grafana : LoudML: Dashboard Setup
-   ![screencapture-localhost-3000-d-hzhzon37k-home-copy-2022-06-22-16_51_05](https://user-images.githubusercontent.com/63293696/175079906-a804968f-14cc-458e-bdde-a2890b8b2328.png)
+  ![Grafana-Panel-Setup](https://user-images.githubusercontent.com/63293696/180094647-be17b234-2d60-40bd-b820-e545137b893b.png)
+
 
 - Influx: Databases
   - Query if there is any data in the database:  
   ```sh
   select count(*) from /.*/
   ```
-  - This database (chronograf) is created automatically by loudml to store annotations but they should be stored in yourAnnotationsEnterHere. It means something was       not set up correctly for annotations to be stored where we want them!
+  - This database (chronograf) is created automatically by loudml to store annotations (unless you set it up yourself, LoudML will always try to create a database to store these annotations) but they should be stored in yourAnnotationsEnterHere. It means something was       not set up correctly for annotations to be stored where we want them! It could be because when seting up the Visualisation Panel to use LoudML we didn't specify the name of the output bucket as it is mentioned in loudml.yml ('readYourPrediction') where we already define the database to deal with annotations ('annotation_db: youAnnotationsEnterHere')
     ![Screenshot 2022-06-22 155650](https://user-images.githubusercontent.com/63293696/175062693-d40c2bcc-350c-4426-a8e1-dea562048f04.png)
 
     
