@@ -1,0 +1,72 @@
+# This is a Docker Compose file to work with Loud ML and an InfluxDB stack.
+
+version: "3.6"
+
+services:
+  loudml:
+    image: loudml/loudml:latest
+    container_name: LoudMLV1
+    restart: always
+    volumes:
+      - var_loudml:/var/lib/loudml
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/loudml/loudml.yml:/etc/loudml/config.yml:ro"
+    environment:
+      influx: http://influxdb:8086
+      influx_database: _internal 
+    ports:
+      - "8077:8077"
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
+
+  influxdb:
+    image: influxdb:1.8.10
+    container_name: InfluxDBV1
+    restart: always
+    environment:
+      - INFLUX_USERNAME=admin
+      - INFLUX_PASSWORD=admin
+      - INFLUXDB_HTTP_SHARED_SECRET=WhateverToken!
+    ports:
+      - "8086:8086"
+    volumes:
+      - var_influxdb:/var/lib/influxdb
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/config/influxdb.conf:/var/lib/influxdb/influxdb.conf" 
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/influxdb/data:/var/lib/influxdb/data"
+
+  telegraf:
+    image: telegraf
+    container_name: TelegrafV1
+    restart: always
+    volumes:
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:trythis"
+
+  grafana:
+    image: grafana/grafana-enterprise:7.5.8
+    container_name: GrafanaV1
+    restart: always
+    ports:
+      - 3000:3000
+    user: '104'
+    environment:
+    - GF_INSTALL_PLUGINS=http://www.github.com/vsergeyev/loudml-grafana-app/blob/master/loudml-grafana-app-1.7.2.zip?raw=true;loudml-grafana-app
+    volumes:
+      - var_grafana:/var/lib/grafana
+      - "D:/AbcWork/LoudML/useInfluxV1/LoudMLData/grafana/grafana.ini:/etc/grafana/grafana.ini:rw"
+    depends_on:
+      - influxdb
+    links: 
+      - "influxdb:trythis"
+
+volumes:
+  var_loudml:
+  var_grafana:
+  var_influxdb:
+
+
+
