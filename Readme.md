@@ -1,6 +1,7 @@
 # LoudML-Grafana-Influx-Telegraf
 
 As of 21.06.2022 : updated by Alberto, any queries email me `alberto-alive@outlook.com`
+Watch this YouTube tutorial: https://www.youtube.com/watch?v=A2-GN5T52rs
 
 This tutorial is for InfluxDB version 1.x. 
 LoudML supports InfluxDB version 1.x and 2.x. LoudML also supports Grafana version 8.x.
